@@ -1,0 +1,135 @@
+body {
+    height: 100vh;
+}
+
+.modal {
+    z-index: 1000;
+}
+
+.modal-title {
+
+}
+
+.modal-body {
+
+}
+
+.modal-footer {
+
+}
+
+#startMenu {
+
+}
+
+.nav {
+    background-image: linear-gradient(to bottom right, #373737, #191110);
+    height: 25vh;
+}
+
+.nav .btn {
+    margin-top: 2%;
+    margin-bottom: 5px;
+}
+
+.nav h1,
+h2,
+h3{
+    color: #c5c6b7;
+}
+
+#fighterPics {
+    text-align: left;
+}
+
+#fighters {
+    padding: 15px;
+}
+
+.fighterPic {
+    float: left;
+}
+
+#titleText {
+    text-align: center;
+}
+
+h1 {
+    font-size: 38px;
+}
+
+#stats{
+    text-align: right;
+}
+
+#stats h3{
+    padding-top: 2%;
+}
+
+#stats .btn {
+    margin-top: 3%;
+}
+
+h3:first-child{
+    padding-top: 15px;
+}
+
+.fighterMenuImage{
+    width: 25%;
+    height: 200px;
+    display: inline-block;
+    float: left;
+}
+
+.fighterMenuImage.active{
+    border: 5px solid green;
+}
+
+.enemyImage{
+    width: 11%;
+    height: 80px;
+    margin-right: 1%;
+    display: inline-block;
+    float: left;
+}
+
+.enemyImage.active{
+    border: 2px solid red;
+}
+
+.main {
+    height: 65vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.friend::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: green;
+}
+
+.footer {
+    height: 10vh;
+    background-image: linear-gradient(to bottom right, #373737, #191110);
+}
+
+.footer button{
+    height: 100%;
+    margin-top: 10px;
+}
+
+.playerFighterImg{
+    height: 100%;
+    overflow: hidden;
+}
+
+.enemyFighterImg{
+    height: 100%;
+}
