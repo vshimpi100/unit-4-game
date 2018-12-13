@@ -291,7 +291,6 @@ var Game = {
             //some animation
             setTimeout(function () {
                 $(".enemyFighterImg").attr("src", Game.enemyCharacter.standPic);
-                console.log("running enemy animation");
             }, 1500);
 
         } else if (this.enemyCharacter.hp <= 0) {
@@ -342,15 +341,20 @@ var Game = {
 
     lose: function () {
         $(".playerFighterImg").attr("src", Game.playerCharacter.diePic);
+        $("#xp").text(Game.xpGain);
+        this.xpGain = 0;
         setTimeout(function () {
-            alert("You died! Press reset to start over.")
+            alert("You died! Press reset to start over.") 
         }, 1000);
     }
-
 };
 
 // start game
 Game.reset();
+
+/////////////////
+/// LISTENERS ///
+/////////////////
 
 $("#startButton").on("click", function () {
     Game.hideStartMenu();
@@ -382,7 +386,12 @@ $(document).on("click", ".enemyImage",function () {
 });
 
 $("#attackButton").on("click", function () {
-    Game.attack();
+    if($(".enemyFighter").html()){
+        Game.attack();
+    }
+    else{
+        alert("You need to select an enemy!");
+    }
 });
 
 $("#resetButton").on("click",function(){
