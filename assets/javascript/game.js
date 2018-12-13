@@ -155,16 +155,16 @@ var Game = {
     ///////////////////
 
     backgrounds: [
-        "assets/images/_backgrounds/1.jpg",
-        "assets/images/_backgrounds/2.jpg",
-        "assets/images/_backgrounds/3.jpeg",
-        "assets/images/_backgrounds/4.jpeg",
-        "assets/images/_backgrounds/5.jpg",
-        "assets/images/_backgrounds/6.jpeg",
-        "assets/images/_backgrounds/7.jpeg",
-        "assets/images/_backgrounds/8.jpg",
-        "assets/images/_backgrounds/9.jpeg",
-        "assets/images/_backgrounds/10.jpg"
+        "./assets/images/backgrounds/1.jpg",
+        "./assets/images/backgrounds/2.jpg",
+        "./assets/images/backgrounds/3.jpeg",
+        "./assets/images/backgrounds/4.jpeg",
+        "./assets/images/backgrounds/5.jpg",
+        "./assets/images/backgrounds/6.jpeg",
+        "./assets/images/backgrounds/7.jpeg",
+        "./assets/images/backgrounds/8.jpg",
+        "./assets/images/backgrounds/9.jpeg",
+        "./assets/images/backgrounds/10.jpg"
     ],
 
     ///////////////
