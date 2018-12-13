@@ -7,6 +7,8 @@ var Game = {
 
     wins: 0, // wins
     xpGain: 0, // will increase as you beat enemies
+    playerBaseHP: 0,
+    enemyBaseHP: 0,
     playerCharacter: {}, // who is the player playing
     enemyCharacter: {}, //who is the player fighting
 
@@ -251,6 +253,11 @@ var Game = {
                 "src": this.playerCharacter.standPic,
             })
         );
+        Game.playerBaseHP = this.playerCharacter.hp;
+        console.log("base player hp",Game.playerBaseHP);
+        $("#playerHealth").attr("aria-valuenow",100);
+        $("#playerHealth").text(this.playerCharacter.hp);
+        this.updateProgressBar("player");
     },
 
     setEnemy: function (targetChar) {
@@ -260,7 +267,12 @@ var Game = {
                 "src": this.enemyCharacter.standPic,
             })
         );
-        this.enemyCharacter.hp *= -1; //makes enemies stronger every time you kill them
+        this.enemyCharacter.hp = Math.round(Math.abs(this.enemyCharacter.hp)); //makes enemies stronger every time you kill them
+        Game.enemyBaseHP = this.enemyCharacter.hp;
+        console.log("base enemy hp",Game.enemyBaseHP);
+        $("#enemyHealth").attr("aria-valuenow",100);
+        $("#enemyHealth").text(this.enemyCharacter.hp);
+        this.updateProgressBar("enemy");
     },
 
     attack: function () {
@@ -271,7 +283,9 @@ var Game = {
         console.log($(".playerFighterImg").attr("src"));
         this.enemyCharacter.hp -= this.playerCharacter.atk;
         console.log("enemy hp", this.enemyCharacter.hp);
-        //some animation here maybe for the progress bar
+
+        Game.updateProgressBar("enemy");
+
         setTimeout(function () {
             $(".playerFighterImg").attr("src", Game.playerCharacter.standPic);
             console.log("running player animation");
@@ -282,9 +296,7 @@ var Game = {
             setTimeout(function () {
                 $(".enemyFighterImg").attr("src", Game.enemyCharacter.fightPic);
                 Game.playerCharacter.hp -= Game.enemyCharacter.cAtk;
-                console.log("player hp", Game.playerCharacter.hp);
-                $(".enemyFighterImg").attr("src", Game.enemyCharacter.fightPic);
-                Game.playerCharacter.hp -= Game.enemyCharacter.cAtk;
+                Game.updateProgressBar("player");
                 console.log("player hp", Game.playerCharacter.hp);
             }, 1000);
 
@@ -301,6 +313,19 @@ var Game = {
             setTimeout(function () {
                 Game.lose();
             }, 1000);
+        }
+    },
+
+    updateProgressBar: function(who){
+        if (who == "player"){
+            var percent = calcPercent(this.playerCharacter.hp,this.playerBaseHP);
+            $("#playerHealth").attr("aria-valuenow",percent);
+            $("#playerHealth").css("width",percent+"%");
+        }
+        else {
+            var percent = calcPercent(this.enemyCharacter.hp,this.enemyBaseHP);
+            $("#enemyHealth").attr("aria-valuenow",percent);
+            $("#enemyHealth").css("width",percent+"%");
         }
     },
 
@@ -327,8 +352,8 @@ var Game = {
         $("#xp").text(Game.xpGain);
 
         // increase player stats
-        Game.playerCharacter.hp *= 1.5;
-        Game.playerCharacter.atk *= 1.5;
+        Game.playerCharacter.hp *= 1.1;
+        Game.playerCharacter.atk *= 1.1;
         setTimeout(function () {
             alert(Game.enemyCharacter.name + " defeated!\nChoose another enemy to fight, or reset to pick another fighter!\nBut be careful, enemies get stronger each time they fight!")
             $(".enemyFighter").empty();
@@ -424,4 +449,9 @@ function activateEnemy(img) {
         items[0].className = 'enemyImage';
     }
     img.className = 'enemyImage active';
+}
+
+function calcPercent(current,max){
+    var percent = current/max*100;
+    return percent;
 }

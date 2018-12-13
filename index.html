@@ -58,7 +58,7 @@
         <div class="container h-100">
             <div class="row h-100">
                 <div class="playerFighter col-5 h-100">
-                    Test
+                    
                 </div>
                 <div class="enemyFighter col-5 offset-2 h-100">
                 </div>
@@ -68,14 +68,20 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-4">
-                    Your Health
+                <div class="col-4 text-left">
+                    <h4>Your Health</h4>
+                    <div class="progress" id="playerMaxHealth">
+                        <div class="progress-bar" id="playerHealth" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
                 <button class="col-4 btn btn-lg btn-light h-100" id="attackButton">
                     Attack
                 </button>
-                <div class="col-4">
-                    Enemy Health
+                <div class="col-4 text-right">
+                    <h4>Enemy Health</h4>
+                    <div class="progress" id="enemyMaxHealth">
+                        <div class="progress-bar" id="enemyHealth" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
             </div>
         </div>

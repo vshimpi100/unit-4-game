@@ -133,3 +133,11 @@ h3:first-child{
 .enemyFighterImg{
     height: 100%;
 }
+
+footer h4 {
+    color: #c5c6b7;
+}
+
+.progress-bar {
+    background-color: #d31818;
+}
